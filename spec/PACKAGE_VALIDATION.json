@@ -1,0 +1,16 @@
+{
+  "artifact_type": "specification_only",
+  "application_built": false,
+  "prd_count": 14,
+  "functional_requirements": 91,
+  "use_cases": 10,
+  "word_overview_pages": 8,
+  "visual_qa": "All eight rendered pages inspected; two screen button widths corrected and rechecked",
+  "package_checks": [
+    "All requirement and acceptance references resolve",
+    "Markdown relative links resolve",
+    "Fixture JSON parses",
+    "ZIP integrity verified after packaging"
+  ],
+  "scope": "AI learning only; career trajectory excluded"
+}

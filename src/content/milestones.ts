@@ -1,0 +1,141 @@
+import type { Milestone } from "./types";
+
+/**
+ * Learner-facing milestone bundles. `status: "published"` is authored intent; the
+ * validator marks a milestone Planned when any capability lacks a complete evidence path.
+ */
+export const milestones: Milestone[] = [
+  // Bundle A: Use AI with better judgement (practical use; also the broad foundations start)
+  {
+    id: "MA1", version: 1, bundle: "A", order: 10, title: "Use AI with better judgement",
+    outcome: "Create an AI task you can check and reuse.",
+    evidenceRequirement: "Find an unsupported claim in a fresh scenario without a hint, and write a task brief that keeps claims within supplied sources.",
+    capabilityIds: ["F04", "F02", "F03"], destinations: ["use", "foundations", "marketing"],
+    status: "published", optional: false,
+    whyIncluded: "Every AI goal depends on telling a supported answer from a convincing one and on stating a task precisely enough to check.",
+    outputDescription: "A reusable task brief plus a checked answer.",
+    estimatedSessions: "2–3 sessions",
+  },
+  {
+    id: "MA2", version: 1, bundle: "A", order: 20, title: "Build a repeatable workflow",
+    outcome: "Choose inputs, human checks and a useful evaluation for a task you repeat.",
+    evidenceRequirement: "Explain what retrieved material guarantees, configure an approval boundary in a simulation, and apply a rubric to two outputs.",
+    capabilityIds: ["F06", "F09", "F08"], destinations: ["use", "foundations"],
+    status: "published", optional: false,
+    whyIncluded: "A single good answer is luck; a workflow with the right inputs, checks and evaluation is a capability.",
+    outputDescription: "A reviewed comparison with an explanation of when a human must decide.",
+    estimatedSessions: "3 sessions",
+  },
+  {
+    id: "MX1", version: 1, bundle: "X", order: 90, title: "Investigate AI more deeply",
+    outcome: "Explore how broad and domain-specific AI products differ, and how models learn, when you want more detail.",
+    evidenceRequirement: "Classify products as horizontal or vertical and explain the boundary in a new domain.",
+    capabilityIds: ["F01"], destinations: ["use", "lead", "marketing", "build", "foundations"],
+    status: "published", optional: true,
+    whyIncluded: "Optional depth for learners who want to understand the landscape rather than only use it.",
+    outputDescription: "An explained classification of two AI products.",
+    estimatedSessions: "1 session",
+  },
+  // Bundle B: leadership
+  {
+    id: "MB1", version: 1, bundle: "B", order: 10, title: "Choose and evaluate an AI pilot",
+    outcome: "Decide whether a proposed AI use deserves a pilot, and say what evidence would change your mind.",
+    evidenceRequirement: "Identify required evidence and controls for two contrasting proposals, then write a pilot memo for a new scenario without the checklist.",
+    capabilityIds: ["F02", "L01", "F08", "L02"], destinations: ["lead"],
+    status: "published", optional: false,
+    whyIncluded: "Leaders are asked to approve AI investments before anyone can prove them; a defensible pilot decision is the first useful outcome.",
+    outputDescription: "A one-page pilot memo with baseline, success measures, failure conditions and a human owner.",
+    estimatedSessions: "4–5 sessions",
+  },
+  // Bundle C: marketing
+  {
+    id: "MC1", version: 1, bundle: "C", order: 10, title: "Create an evidence-based campaign brief",
+    outcome: "Produce a sourced brief, creative variants and an evaluation plan that keep claims under control.",
+    evidenceRequirement: "Identify an overstated claim against a factsheet, write a source-backed brief, and plan a comparison while stating what it cannot establish.",
+    capabilityIds: ["F04", "M01", "F08", "M02"], destinations: ["marketing"],
+    status: "published", optional: false,
+    whyIncluded: "Marketing work with AI fails on unsupported claims and unmeasured variation; both are learnable checks.",
+    outputDescription: "A brief, approved claims, two creative variants, a rubric and a measurement plan.",
+    estimatedSessions: "4–5 sessions",
+  },
+  // Bundle D: builder
+  {
+    id: "MD1", version: 1, bundle: "D", order: 10, title: "Design and test a grounded AI assistant",
+    outcome: "Diagnose why a grounded assistant answered wrongly and build the evaluation set that would catch it.",
+    evidenceRequirement: "Attribute failures in two traces to retrieval, synthesis or missing information, then write an evaluation set with normal, missing-source and conflicting-source cases.",
+    capabilityIds: ["F06", "B01", "F08", "B02"], destinations: ["build"],
+    status: "published", optional: false,
+    whyIncluded: "A working chat window is not a reliable application; the difference is retrieval quality, evaluation and boundaries.",
+    outputDescription: "A versioned evaluation set with expected behaviours and a failure analysis. Live deployment is not required.",
+    estimatedSessions: "4–5 sessions",
+  },
+  {
+    id: "MD2", version: 1, bundle: "D", order: 20, title: "Configure tool boundaries and fallback behaviour",
+    outcome: "Decide what an assistant may do on its own and what needs approval.",
+    evidenceRequirement: "Configure an approval boundary in a simulation and justify a fallback rule in a fresh scenario.",
+    capabilityIds: ["F09"], destinations: ["build"],
+    status: "published", optional: false,
+    whyIncluded: "Tool permissions and fallbacks decide whether a failure is embarrassing or expensive.",
+    outputDescription: "A configured approval policy with observed simulation outcomes.",
+    estimatedSessions: "2 sessions",
+  },
+  // Bundle E: research foundations starter and planned route
+  {
+    id: "ME1", version: 1, bundle: "E", order: 10, title: "Understand a simple prediction experiment",
+    outcome: "Explain a prediction, a baseline and why a fair test needs fresh examples.",
+    evidenceRequirement: "Explain the leakage problem in a supplied experiment and propose a fairer next step, then apply the same distinction in a different domain.",
+    capabilityIds: ["R01"], destinations: ["research"],
+    status: "published", optional: false,
+    whyIncluded: "Research starts with scientific reasoning about evidence, which needs no code or mathematics to begin.",
+    outputDescription: "A labelled data split, a baseline comparison and a leakage explanation.",
+    estimatedSessions: "2 sessions",
+  },
+  {
+    id: "ME2", version: 1, bundle: "E", order: 20, title: "Work with data tables and summaries",
+    outcome: "Summarise small datasets with arithmetic you can defend.",
+    evidenceRequirement: "Compute and interpret an average error on a fresh table.",
+    capabilityIds: ["R02"], destinations: ["research"], status: "planned", optional: false,
+    whyIncluded: "Every experiment reports numbers; you need to know what they summarise.",
+    outputDescription: "An explained summary of a delivery dataset.",
+  },
+  {
+    id: "ME3", version: 1, bundle: "E", order: 30, title: "Functions and input-output mappings",
+    outcome: "Describe a prediction rule as a function.",
+    evidenceRequirement: "Evaluate and explain a rule on new inputs.",
+    capabilityIds: ["R03"], destinations: ["research"], status: "planned", optional: false,
+    whyIncluded: "Models are functions; the idea must be precise before code or algebra.",
+    outputDescription: "A written explanation of a prediction rule.",
+  },
+  {
+    id: "ME4", version: 1, bundle: "E", order: 40, title: "Programming fluency for experiments",
+    outcome: "Read and modify small scripts that compute predictions and errors.",
+    evidenceRequirement: "Explain what a supplied script computes; later, write one in a reviewed environment.",
+    capabilityIds: ["R04"], destinations: ["research"], status: "planned", optional: false,
+    whyIncluded: "Research requires running and changing experiments, not only reading about them.",
+    outputDescription: "An explained script.",
+  },
+  {
+    id: "ME5", version: 1, bundle: "E", order: 50, title: "Training, evaluation and leakage",
+    outcome: "Set up an experiment that separates decisions from the final estimate.",
+    evidenceRequirement: "Find and fix leakage in a supplied setup.",
+    capabilityIds: ["R05"], destinations: ["research"], status: "planned", optional: false,
+    whyIncluded: "Leakage is the most common way an impressive result turns out to be nothing.",
+    outputDescription: "A corrected experimental design.",
+  },
+  {
+    id: "ME6", version: 1, bundle: "E", order: 60, title: "Mathematics for learning systems",
+    outcome: "Use vectors, probability and gradients to read a model description.",
+    evidenceRequirement: "Solve small problems and explain a gradient step.",
+    capabilityIds: ["R06"], destinations: ["research"], status: "planned", optional: false,
+    whyIncluded: "Model descriptions are written in this language.",
+    outputDescription: "Worked problems with explanations.",
+  },
+  {
+    id: "ME7", version: 1, bundle: "E", order: 70, title: "Read, reproduce and critique a paper",
+    outcome: "Explain a paper's method, reproduce a result and identify what it does not establish.",
+    evidenceRequirement: "A reviewed paper critique and a reproduction log.",
+    capabilityIds: ["R07"], destinations: ["research"], status: "planned", optional: false,
+    whyIncluded: "This is what research participation actually requires; it needs expert review beyond this product's self-service scope.",
+    outputDescription: "A paper critique.",
+  },
+];

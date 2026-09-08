@@ -1,0 +1,56 @@
+{
+  "fixture": true,
+  "description": "Fictional specification example, not a real learner",
+  "learner_id": "fixture_anita",
+  "profile_version": 2,
+  "experience_facts": [
+    {
+      "id": "fact_01",
+      "type": "action",
+      "value": "Compared supplier bids",
+      "source_type": "cv",
+      "source_span": "Coordinated suppliers and compared bids for construction projects.",
+      "confirmed": true
+    }
+  ],
+  "goal": {
+    "version": 1,
+    "original": "Use AI confidently in operations work",
+    "capability_targets": [
+      "F03",
+      "F04",
+      "F06",
+      "F08",
+      "F09"
+    ],
+    "depth": "apply"
+  },
+  "preferences": {
+    "session_minutes": 20,
+    "personal_examples": true
+  },
+  "evidence": [
+    {
+      "attempt_id": "attempt_01",
+      "capability_id": "F04",
+      "depth": "apply",
+      "item_family": "supplier_claims",
+      "independent": true,
+      "result": "pass",
+      "evaluation_status": "final"
+    }
+  ],
+  "capabilities": {
+    "F04": {
+      "state": "practising",
+      "reason": "One independent item family passed; another family including transfer is required for demonstration"
+    }
+  },
+  "next_activity": {
+    "type": "transfer",
+    "capability_id": "F04",
+    "item_family": "travel_claims",
+    "reason_code": "VERIFY_TRANSFER",
+    "explanation": "You checked the supplier claim against its source. Now try the same check in a different situation."
+  }
+}

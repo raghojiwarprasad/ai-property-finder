@@ -1,20 +1,13 @@
-# Dependencies
 node_modules/
-.venv/
-venv/
-__pycache__/
-
-# Environment
+.next/
+out/
+data/
 .env
 .env.*
 !.env.example
-
-# Build output
-dist/
-build/
-.next/
-
-# Editor / OS
-.vscode/
-.idea/
+*.tsbuildinfo
+next-env.d.ts
+e2e-results/
+playwright-report/
+test-results/
 .DS_Store
