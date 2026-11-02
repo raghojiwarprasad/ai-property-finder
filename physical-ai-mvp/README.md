@@ -22,6 +22,14 @@ Python ≥ 3.12 (lerobot 0.6.1 requires it) · Streamlit · `lerobot[dataset]==0
 · NumPy / Pandas / PyArrow · PyAV + FFmpeg (video probing, demuxing, preview clips) · `huggingface_hub` (Hub download)
 · pytest. Storage is the local filesystem under `storage/` (`original/`, `working/`, `export/`). No database.
 
+## Quickest start
+
+```bash
+cd physical-ai-mvp && ./run.sh        # creates .venv, installs, starts the app at http://localhost:8501
+```
+
+`./run.sh test` runs the test suite. Manual steps:
+
 ## Install and run
 
 ```bash
