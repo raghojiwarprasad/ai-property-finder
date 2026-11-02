@@ -1,0 +1,8 @@
+storage/
+.pytest-storage/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# the root .gitignore ignores data/; the sample dataset's data/ folder must be kept
+!sample_data/**/data/

@@ -1,0 +1,15 @@
+# Versions pinned to the set this MVP was built and tested with (Python 3.13, Linux x86_64).
+# lerobot 0.6.1 requires Python >= 3.12.
+lerobot[dataset,av-dep]==0.6.1
+torch==2.11.0
+torchvision==0.26.0
+torchcodec==0.11.1
+av==15.1.0
+datasets==4.8.5
+huggingface_hub==1.33.0
+numpy==2.2.6
+pandas==2.3.3
+pyarrow==26.0.0
+Pillow==12.3.0
+streamlit==1.66.1
+pytest==9.2.0
