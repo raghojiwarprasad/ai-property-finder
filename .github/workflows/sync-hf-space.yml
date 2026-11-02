@@ -2,11 +2,9 @@
 # One-time setup: add a GitHub repository secret HF_TOKEN (a Hugging Face "write" token),
 # then run this workflow from the Actions tab (or push to the branch below).
 name: Sync Physical AI MVP to Hugging Face Space
+# Note: Hugging Face requires a PRO subscription to host Docker/Gradio Spaces (Nov 2026). Run manually once that is in place.
 on:
   workflow_dispatch:
-  push:
-    branches: [claude/fervent-euler-yd7zui, main]
-    paths: ["physical-ai-mvp/**"]
 jobs:
   sync:
     runs-on: ubuntu-latest
