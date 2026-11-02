@@ -1,5 +1,8 @@
 # Versions pinned to the set this MVP was built and tested with (Python 3.13, Linux x86_64).
 # lerobot 0.6.1 requires Python >= 3.12.
+# CPU-only PyTorch wheels come first so hosted free tiers (Streamlit Community Cloud) don't pull the multi-GB CUDA build.
+--index-url https://download.pytorch.org/whl/cpu
+--extra-index-url https://pypi.org/simple
 lerobot[dataset,av-dep]==0.6.1
 torch==2.11.0
 torchvision==0.26.0
