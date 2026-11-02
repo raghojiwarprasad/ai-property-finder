@@ -21,6 +21,10 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           SPACE_ID: Pashu/physical-ai-data-mvp
         run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::error::Repository secret HF_TOKEN is not set. Create a Hugging Face write token at https://huggingface.co/settings/tokens and add it under Settings → Secrets and variables → Actions → New repository secret (name: HF_TOKEN)."
+            exit 1
+          fi
           python - <<'PY'
           import os
           from huggingface_hub import HfApi
