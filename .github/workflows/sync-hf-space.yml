@@ -1,0 +1,33 @@
+# Optional: publish physical-ai-mvp/ to a Hugging Face Space.
+# One-time setup: add a GitHub repository secret HF_TOKEN (a Hugging Face "write" token),
+# then run this workflow from the Actions tab (or push to the branch below).
+name: Sync Physical AI MVP to Hugging Face Space
+on:
+  workflow_dispatch:
+  push:
+    branches: [claude/fervent-euler-yd7zui, main]
+    paths: ["physical-ai-mvp/**"]
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "huggingface_hub>=0.26"
+      - name: Upload folder to the Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          SPACE_ID: Pashu/physical-ai-data-mvp
+        run: |
+          python - <<'PY'
+          import os
+          from huggingface_hub import HfApi
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          api.create_repo(os.environ["SPACE_ID"], repo_type="space", space_sdk="streamlit", exist_ok=True)
+          api.upload_folder(folder_path="physical-ai-mvp", repo_id=os.environ["SPACE_ID"], repo_type="space",
+                            ignore_patterns=["storage/**", ".venv/**", ".pytest-storage/**", "__pycache__/**", "*.pyc"],
+                            commit_message="Sync from GitHub")
+          print("https://huggingface.co/spaces/" + os.environ["SPACE_ID"])
+          PY

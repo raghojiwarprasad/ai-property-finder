@@ -1,3 +1,17 @@
+---
+title: Physical AI Data MVP
+emoji: 🤖
+colorFrom: blue
+colorTo: gray
+sdk: streamlit
+sdk_version: 1.66.1
+python_version: "3.12"
+app_file: app.py
+pinned: false
+license: mit
+short_description: LeRobot v3 import, validate, review and export
+---
+
 # Physical AI training-data MVP (LeRobot v3)
 
 One end-to-end workflow, locally runnable, no accounts/payments/marketplace:
