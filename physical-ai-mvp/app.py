@@ -52,6 +52,9 @@ with st.sidebar:
     current = st.selectbox("Dataset", options=["(none)"] + datasets, index=(datasets.index(st.session_state.dataset_id) + 1) if st.session_state.get("dataset_id") in datasets else 0)
     st.session_state.dataset_id = None if current == "(none)" else current
     st.session_state.setdefault("stage", STAGES[0])
+    # Navigation requested by a button (e.g. after an import) is applied here, before the radio widget exists.
+    if "next_stage" in st.session_state:
+        st.session_state.stage = st.session_state.pop("next_stage")
     stage = st.radio("Stage", STAGES, key="stage")
     if st.session_state.dataset_id:
         s = stmod.status(st.session_state.dataset_id)
@@ -104,7 +107,7 @@ def page_import():
                     rec = importer.import_zip(up, up.name)
                 st.session_state.dataset_id = rec.dataset_id
                 st.success(f"Imported `{rec.dataset_id}` ({fmt_bytes(rec.size_bytes)}, {rec.file_count} files).")
-                st.session_state.stage = STAGES[1]
+                st.session_state.next_stage = STAGES[1]
                 st.rerun()
             except importer.ImportError_ as e:
                 st.error(str(e))
@@ -120,7 +123,7 @@ def page_import():
                     rec = importer.import_huggingface(repo, revision=rev.strip() or None)
                 st.session_state.dataset_id = rec.dataset_id
                 st.success(f"Imported `{rec.dataset_id}` ({fmt_bytes(rec.size_bytes)}, {rec.file_count} files).")
-                st.session_state.stage = STAGES[1]
+                st.session_state.next_stage = STAGES[1]
                 st.rerun()
             except importer.ImportError_ as e:
                 st.error(str(e))
@@ -135,7 +138,7 @@ def page_import():
                 rec = importer.import_local_directory(Path(local))
             st.session_state.dataset_id = rec.dataset_id
             st.success(f"Imported `{rec.dataset_id}`.")
-            st.session_state.stage = STAGES[1]
+            st.session_state.next_stage = STAGES[1]
             st.rerun()
         except (importer.ImportError_, FileNotFoundError) as e:
             st.error(str(e))
