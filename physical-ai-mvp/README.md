@@ -3,10 +3,8 @@ title: Physical AI Data MVP
 emoji: 🤖
 colorFrom: blue
 colorTo: gray
-sdk: streamlit
-sdk_version: 1.66.1
-python_version: "3.12"
-app_file: app.py
+sdk: docker
+app_port: 7860
 pinned: false
 license: mit
 short_description: LeRobot v3 import, validate, review and export
